@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>  
+<head>  
+	<meta charset="utf-8">  
+	<title>监控 </title>
+	<script src="../../jquery/jquery-1.9.0.min.js"></script>
+	<script src="../knockout-3.4.0.js"></script>
+</head> 
+<body>
+    <div> 
+        姓名：<label data-bind="text:Name"></label><br />
+        职业：<input type="text" data-bind="textinput:Profession" />
+    </div>
+    <div>
+        <input type="text" id="txt_testobservable" />
+    </div>
+    <script type="text/javascript">
+        //1.定义ViewModel
+        var myViewModel = {
+            Name: ko.observable("Lilei"),
+            Profession: "软件工程师",
+        };
+
+        //2.激活绑定
+        ko.applyBindings(myViewModel);
+
+        $(function () {
+            //注册文本框的textchange事件
+            $("#txt_testobservable").on("input", function () {
+            	myViewModel.Name($(this).val());
+            });
+        });
+    </script>
+</body>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>  
+<head>  
+	<meta charset="utf-8">  
+	<title>test</title>
+	<script src="../../jquery/jquery-1.9.0.min.js"></script>
+	<script src="../knockout-3.4.0.js"></script>
+</head> 
+<body>
+<!-- <div> 
+    From：<label data-bind="text:From"></label><br />
+    To：<input type="text" data-bind="textinput:To" />
+</div> -->
+    <div> 
+        姓名：<label id="lb_name" data-bind="text:Name"></label><br />
+        职业：<input type="text" data-bind="textinput:Profession" />
+    </div>
+</body>  
+</html>  
+<script type="text/javascript">
+/* 	var myViewModel = {
+			From: "去了",
+			To: "来了",
+        };
+	ko.applyBindings(myViewModel); */
+
+	var myViewModel1 = {
+			Name: "Lilei",
+            Profession: "软件工程师",
+        };
+	ko.applyBindings(myViewModel1,document.getElementById("lb_name"));
+</script>

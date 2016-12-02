@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>  
+<head>  
+	<meta charset="utf-8">  
+	<title>监控数组</title>
+	<script src="../../jquery/jquery-1.9.0.min.js"></script>
+	<script src="../knockout-3.4.0.js"></script>
+</head> 
+<body>
+    <div><select data-bind="options:deptArr,
+                           optionsText:'Name'"></select>
+
+    </div>
+    <div>
+        <input type="text" id="txt_testobservable" /><input type="button" id="btn_test" value="新增部门" />
+    </div>
+    <script type="text/javascript">
+            var deptArr = ko.observableArray([
+                { id: 1, Name: '研发部' },
+                { id: 2, Name: '行政部' },
+                { id: 3, Name: '人事部' }
+            ]);
+            var viewModel = {
+                deptArr: deptArr,
+            };
+
+            ko.applyBindings(viewModel);
+
+            var i=4;
+            $(function () {
+                $("#btn_test").on("click", function () {
+                    deptArr.push({ id: i++, Name: $("#txt_testobservable").val() });
+                });
+            });
+    </script>
+</body>
